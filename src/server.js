@@ -1,35 +1,36 @@
 'use strict';
+require('dotenv').config();
+
+const PORT = process.env.PORT || 3500;
+
+// 3rd party packages
 const express = require('express');
-const logger = require ('../src/middleware/logger')
-const error404 = require ('../src/error-handlers/404')
-const error500 = require ('../src/error-handlers/500')
-const validator = require ('../src/middleware/validator')
-const FoodRouter = require("./routes/food.router");
-const clothesRouter = require("./routes/clothes.router");
+
+//local modules
+const notFoundHandler = require('./error-handlers/404');
+const errorHandler = require('./error-handlers/500');
+const foodRouter = require('./routes/food.router');
+const clothesRouter = require('./routes/clothes.router')
+
+const logger = require('./middleware/logger');
+
+//this to parse the data from the req.body
 const app = express();
-
-
 app.use(express.json());
-app.get("/", (req, res) => {
-    res.status(200).send('Home Page');
-});
-
-
 
 app.use(logger);
-app.use(FoodRouter);
+app.use(foodRouter);
 app.use(clothesRouter);
-app.use('*', error404);
-app.use(error500);
+app.use('*', notFoundHandler);
+app.use(errorHandler);
 
-
-
-function start(port) {
-    app.listen(port, () => {
-        console.log(`i'm listening on port${port}`);
-    });
+function start(PORT) {
+  app.listen(PORT, () => {
+    console.log(`Server is listening on PORT ${PORT}`);
+  });
 }
+
 module.exports = {
-    app: app,
-    start: start,
+  app: app,
+  start: start,
 };
