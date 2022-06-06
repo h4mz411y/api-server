@@ -1,5 +1,5 @@
 'use strict';
-const { app } = require('../src/server');  
+const { app } = require('../src/server'); // destructing assignment
 const supertest = require('supertest');
 const mockRequest = supertest(app);
 
@@ -10,63 +10,44 @@ beforeAll(async () => {
 });
 
 describe('Web server', () => {
-
-    it('page not found', async () => {
-    const response = await mockRequest.get('/abc');
+  it('must give 404', async () => {
+    const response = await mockRequest.get('/awddaw');
     expect(response.status).toBe(404);
   });
-  it('invalid input error', async () => {
+  it('must give 404', async () => {
     const response = await mockRequest.patch('/food');
     expect(response.status).toBe(404);
   });
-  it('Add new food', async () => {
+
+  it('can add a food item', async () => {
     const response = await mockRequest.post('/food').send({
-        name: 'burger',
-        price: 10
+      name: 'banana',
+      calories: 130,
     });
     expect(response.status).toBe(201);
   });
-  it('Get all the added food ', async () => {
+
+  it('can get all food items', async () => {
     const response = await mockRequest.get('/food');
     expect(response.status).toBe(200);
   });
-  it('Get onefood', async () => {
+
+  it('can get one record', async () => {
     const response = await mockRequest.get('/food/1');
     expect(response.status).toBe(200);
   });
-  it('Update  food', async () => {
+
+  it('can update a record', async () => {
     const response = await mockRequest.put('/food/1');
     expect(response.status).toBe(201);
   });
-  it('Delete food', async () => {
+
+  it('can delete a record', async () => {
     const response = await mockRequest.delete('/food/1');
     expect(response.status).toBe(204);
   });
-  it('Add clothing', async () => {
-    const response = await mockRequest.post('/clothes').send({
-        name: 'burger',
-        size: "small"
-    });
-    expect(response.status).toBe(201);
-  });
-  it('Get all clothes items', async () => {
-    const response = await mockRequest.get('/clothes');
-    expect(response.status).toBe(200);
-  });
-  it('Get one added clothes', async () => {
-    const response = await mockRequest.get('/clothes/1');
-    expect(response.status).toBe(200);
-  });
-  it('Update  clothes', async () => {
-    const response = await mockRequest.put('/clothes/1');
-    expect(response.status).toBe(201);
-  });
-  it('Delete  clothes', async () => {
-    const response = await mockRequest.delete('/clothes/1');
-    expect(response.status).toBe(204);
-  });
-
 });
+
 afterAll(async () => {
   await db.drop();
 });
