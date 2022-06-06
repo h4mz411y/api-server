@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test jest",
-    "start": "NODE_ENV=development node index.js",
-    "dev": " NODE_ENV=test production index.js"
+    "test": "NODE_ENV=test jest --coverage --verbose",
+    "dev": "NODE_ENV=development nodemon index.js",
+    "start": "NODE_ENV=production node index.js"
   },
   "repository": {
     "type": "git",
@@ -20,20 +20,16 @@
   },
   "homepage": "https://github.com/h4mz411y/basic-api-server#readme",
   "dependencies": {
-    "body-parser": "^1.20.0",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "pg": "^8.7.3",
-    "pg-hstore": "^2.3.4",
+    "postgres": "^3.2.4",
     "sequelize": "^6.20.1",
-    "sqlite": "^4.1.1",
+    "sequelize-cli": "^6.4.1",
     "sqlite3": "^5.0.8"
   },
   "devDependencies": {
-    "eslint": "^8.16.0",
-    "eslint-plugin-json": "^3.1.0",
     "jest": "^28.1.0",
-    "mocha": "^10.0.0",
     "supertest": "^6.2.3"
   }
 }

@@ -1,36 +1,30 @@
-'use strict';
+'use strict'; 
 require('dotenv').config();
-
-const PORT = process.env.PORT || 3500;
-
-// 3rd party packages
-const express = require('express');
-
-//local modules
-const notFoundHandler = require('./error-handlers/404');
-const errorHandler = require('./error-handlers/500');
-const foodRouter = require('./routes/food.router');
-const clothesRouter = require('./routes/clothes.router')
-
-const logger = require('./middleware/logger');
-
-//this to parse the data from the req.body
+const PORT = process.env.PORT || 3030;
+const express = require("express");
 const app = express();
+const error404 = require("./error-handlers/404");
+const error500 = require("./error-handlers/500");
+const FoodRouter = require("./routes/food.router");
+const ClothesRouter = require("./routes/clothes.router");
 app.use(express.json());
 
-app.use(logger);
-app.use(foodRouter);
-app.use(clothesRouter);
-app.use('*', notFoundHandler);
-app.use(errorHandler);
+
+
+app.use(ClothesRouter);
+app.use(FoodRouter);
+app.use("*", error404);
+
+app.use(error500); 
+
 
 function start(PORT) {
-  app.listen(PORT, () => {
-    console.log(`Server is listening on PORT ${PORT}`);
-  });
+    app.listen(PORT, () => {
+        console.log(`Listen and Running on port ${PORT}`);
+    });
 }
 
 module.exports = {
-  app: app,
-  start: start,
+    app: app,
+    start: start,
 };
