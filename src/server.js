@@ -9,6 +9,9 @@ const FoodRouter = require("./routes/food.router");
 const ClothesRouter = require("./routes/clothes.router");
 app.use(express.json());
 
+app.get("/", (req, res) => {
+    res.status(200).send('Home Page');
+});
 
 
 app.use(ClothesRouter);
@@ -16,6 +19,8 @@ app.use(FoodRouter);
 app.use("*", error404);
 
 app.use(error500); 
+
+
 
 
 function start(PORT) {
