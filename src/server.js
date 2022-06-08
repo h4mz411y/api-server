@@ -6,7 +6,7 @@ const app = express();
 const error404 = require("./error-handlers/404");
 const error500 = require("./error-handlers/500");
 const FoodRouter = require("./routes/food.router");
-const ClothesRouter = require("./routes/clothes.router");
+const IngredientsRouter = require("./routes/Ingredients.router");
 app.use(express.json());
 
 app.get("/", (req, res) => {
@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 });
 
 
-app.use(ClothesRouter);
+app.use(IngredientsRouter);
 app.use(FoodRouter);
 app.use("*", error404);
 
