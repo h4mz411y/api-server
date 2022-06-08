@@ -23,36 +23,34 @@ describe('server test', () => {
         const response = await mockRequest.get('/food');
         expect(response.status).toBe(200);
     });
-    it('update', async () => {
-        const response = await mockRequest.put('/food/1');
-        expect(response.status).toBe(201);
-    });
+
+    
     
     it(' delete', async () => {
         const response = await mockRequest.delete('/food/1');
         expect(response.status).toBe(204);
     });
     
-    it('add new type of  clothes', async () => {
-        const response = await mockRequest.post('/clothes').send({
-            ClothesType: 'T-shirt',
-            Season: 'spring'
+    it('add new type of  ingredients', async () => {
+        const response = await mockRequest.post('/ingredients').send({
+            MainIngredients: 'cheese',
+            Spice: 'herb'
         });
         expect(response.status).toBe(201);
     });
 
-    it(' get  clothes', async () => {
-        const response = await mockRequest.get('/clothes');
+    it(' get  ingredients', async () => {
+        const response = await mockRequest.get('/ingredients');
         expect(response.status).toBe(200);
     });
 
-    it('  update clothes', async () => {
-        const response = await mockRequest.put('/clothes/1');
+    it('  update ingredients', async () => {
+        const response = await mockRequest.put('/ingredients/1');
         expect(response.status).toBe(201);
     });
     
-    it(' delete clothes', async () => {
-        const response = await mockRequest.delete('/clothes/1');
+    it(' delete ingredients', async () => {
+        const response = await mockRequest.delete('/ingredients/1');
         expect(response.status).toBe(204);
     });
 });
