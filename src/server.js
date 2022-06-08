@@ -10,7 +10,7 @@ const IngredientsRouter = require("./routes/Ingredients.router");
 app.use(express.json());
 
 app.get("/", (req, res) => {
-    res.status(200).send('Home Page ====> Use (/) to view the home page || (/food) ====> to view availbale list of food || (/clothes) ===> to veiw availble list of clothes || you can add , update, list and delete elements');
+    res.status(200).send('Home Page ====> Use (/) to view the home page || (/food) ====> to view availbale list of food || (/ingredients) ===> to veiw availble list of Ingredients || you can add , update, list and delete elements');
 });
 
 
