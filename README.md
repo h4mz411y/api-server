@@ -11,4 +11,4 @@
 ![](./resources/lab04test.PNG)
 
  ## UML
-![UML](./resources/class04UML.PNG)
+[Click here](https://drive.google.com/file/d/1wVdAsy2dog4FLKybN3RCHlVDcStFeYrW/view?usp=sharing)
