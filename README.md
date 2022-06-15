@@ -9,3 +9,6 @@
 ![Pull-Request](./resources/api-seerver-test.PNG)
 ## TEst lab04
 ![](./resources/lab04test.PNG)
+
+ ## UML
+![UML](./resources/class04UML.PNG)
